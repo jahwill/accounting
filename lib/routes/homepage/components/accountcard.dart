@@ -1,4 +1,6 @@
+import 'package:accounting/domain/appstate/current_userstate.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../deffault.dart';
 
@@ -31,72 +33,76 @@ class AccountBalanceCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               horizontal: kDeffaultpadding,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Balance',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                    ),
-                    SizedBox(
-                      child: Icon(
-                        Icons.keyboard_arrow_down,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 2,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  padding: EdgeInsets.all(3),
-                  child: Image.asset(
-                    'assets/icons/naira.png',
-                    color: Color(0xFFD1D5DB),
+            child: Consumer<userState>(
+              builder: (context, userfirstname, child) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 10,
                   ),
-                ),
-                SizedBox(
-                  height: 7.0,
-                ),
-                Text(
-                  ///todo:account details are to come here
-                  '500,260.90', overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.headline5.copyWith(
-                      fontSize: 28,
-                      color: Colors.white,
-                      fontFamily: 'greycliff',
-                      letterSpacing: 1.5,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(),
-                    Text(
-                      ///todo:User name comes here
-                      'John Brown',
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          color: kDeffaultColor.withOpacity(0.9), fontSize: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Balance',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
+                      SizedBox(
+                        child: Icon(
+                          Icons.keyboard_arrow_down,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 2,
+                  ),
+                  Container(
+                    height: 30,
+                    width: 30,
+                    padding: EdgeInsets.all(3),
+                    child: Image.asset(
+                      'assets/icons/naira.png',
+                      color: Color(0xFFD1D5DB),
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                  SizedBox(
+                    height: 7.0,
+                  ),
+                  Text(
+                    ///todo:account details are to come here
+                    '500,260.90', overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.headline5.copyWith(
+                        fontSize: 28,
+                        color: Colors.white,
+                        fontFamily: 'greycliff',
+                        letterSpacing: 1.5,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 8.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(),
+                      Text(
+                        ///todo:User name comes here
+                        userfirstname.firstname.mail,
+                        // 'John brown',
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            color: kDeffaultColor.withOpacity(0.9),
+                            fontSize: 16),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

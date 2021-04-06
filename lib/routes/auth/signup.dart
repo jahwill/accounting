@@ -6,7 +6,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../deffault.dart';
-import 'form.dart';
+import 'signup_form.dart';
 
 class SignUp extends StatefulWidget {
   @override
